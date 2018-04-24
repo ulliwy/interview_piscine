@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   compress.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 17:02:59 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/24 02:27:45 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/24 10:21:22 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,11 @@ char *dictPrintHeader(struct  s_dict *dict, int *size)
 		i++;
 	}
 	len++;
-	//printf("%d\n", len);
 	char *header = calloc(1, len + 1);
 	*size = len;
 	i = 0;
 	header[0] = '<';
 	char *h = header + 1;
-	//printf("%d\n", dict->capacity);
 	while (i < dict->capacity)
 	{
 		struct s_item *temp = dict->items[i];
@@ -123,7 +121,6 @@ char *compress(char *book, struct s_dict *dict)
 {
 	int dict_size;
 	char *header = dictPrintHeader(dict, &dict_size);
-	//printf("%s\n", header);
 	int j = 0;
 	int i = 0;
 	char *new = malloc(strlen(book) + dict_size + 1);
@@ -136,23 +133,18 @@ char *compress(char *book, struct s_dict *dict)
 	strncpy(new + i, header, dict_size);
 	free(header);
 	int jj = 0;
-	//int word_size = 0;
 	char *word;
 	int hash_num;
 	i += dict_size;
 
 	while (book[j])
 	{
-		//printf("<%c>\n", book[j + 1]);
-		//break;
 		while (!isalnum(book[j]) && book[j])
 		{
-			//printf("space\n");
 			new[i] = book[j];
 			i++;
 			j++;
 		}
-		//printf("j: %d\n", j);
 		jj = j;
 		while (isalnum(book[jj]) && book[jj])
 			jj++;
@@ -161,42 +153,28 @@ char *compress(char *book, struct s_dict *dict)
 		word = (char *)calloc(1, word_len + 1);
 
 		strncpy(word, book + j, word_len);
-		//fprintf(stderr, "%s\n", word);
 		if ((hash_num = dictSearch(dict, word)) != -1)
 		{
-			//fprintf(stderr, "<<<<<here1>>>>>>\n");
-			//printf("i: %d, j: %d, len: %d\n", i, j, jj - j + 1);
 			new[i] = '@';
-			//printf("here:%d\n", hash_num);
 			new[i + 1] = hash_num + 1;
 			i = i + 2;
-			//printf("i: %d, j: %d, len: %d\n", i, j, jj - j + 1);
-			//printf("%s\n", word);
 		}
 		else
 		{
-			//"here is come hjjhjjh with jj   every  "
-			//"come in"
-			//printf("here2\n");
-			//printf("i: %d, j: %d, len: %d\n", i, j, jj - j + 1);
 			if (i != j)
 			{
-				//printf("here3\n");
 				strncpy(new + i, book + j, word_len);
 			}
 			i = i + word_len;
 		}
 		free(word);
 		j = jj + 1;
-		//printf("%d\n", j);
 	}
-	//printf("i: %d, j: %d\n", i, j);
 	while (new[i])
 	{
 		new[i] = '\0';
 		i++;
 	}
-	//printf("<%s>\n", book);
 
 	return (new);
 }

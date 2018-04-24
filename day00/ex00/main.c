@@ -10,14 +10,14 @@ int main(void)
 	struct s_art **arts;
 
 	arts = getArts(); //parsing the file and put it in an array
-	printf("'%s' => %d\n", "Mona Lisa", searchPrice(arts, "Mona Lisa"));
-	printf("'%s' => %d\n", "", searchPrice(arts, ""));
-	printf("'%s' => %d\n", "NO such thing", searchPrice(arts, "NO such thing"));
 
 	/*-------------------
 	launch your test here
 	--------------------*/
-	//printf("price for the art \'%s\' is %d\n", "Guernica", searchPrice(arts, "Guernica"));
+	printf("'%s' => %d\n", "Mona Lisa", searchPrice(arts, "Mona Lisa"));
+	printf("'%s' => %d\n", "", searchPrice(arts, ""));
+	printf("'%s' => %d\n", "NO such thing", searchPrice(arts, "NO such thing"));
+	printf("price for the art \'%s\' is %d\n", "Guernica", searchPrice(arts, "Guernica"));
 
 	return (0);
 }

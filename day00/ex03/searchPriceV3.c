@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   searchPriceV3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 12:20:24 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/24 00:20:28 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/24 10:15:39 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,7 @@ struct s_art *dictSearch(struct s_dict *dict, char *key)
 	while (temp)
 	{
 		if (!strcmp(key, temp->value->name))
-		{
-			//printf("%s %s\n", key, dict->items[k]->value->name);
 			return (temp->value);
-		}
 		temp = temp->next;
 	}
 	return(NULL);
@@ -104,6 +101,20 @@ void test(struct s_art **arts)
 		printf("%s\n", test->name);
 	else 
 		printf("no\n");
+
+	test = dictSearch(dict, "Mona Lisa");
+	if (test)
+		printf("%s\n", test->name);
+	else 
+		printf("no\n");
+
+	test = dictSearch(dict, "No!!!");
+	if (test)
+		printf("%s\n", test->name);
+	else 
+		printf("no\n");
+
+	// additional tests are below
 
 	// struct s_dict *dict = dictInit(5);
 	// dictInsert(dict, arts[0]->name, arts[0]);

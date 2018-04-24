@@ -30,11 +30,8 @@ int main(void)
 		printf("%s\n", arts[i]->name);
 		i++;
 	}
-
 	return (0);
 }
-
-
 
 // Function used for the test
 // Don't go further :)

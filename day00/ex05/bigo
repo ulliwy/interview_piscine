@@ -1,10 +1,16 @@
-Search:
+compress:
+O(n + m) - in space, where n - length of the book, m - length of the header (sum of lengths of words).
+O(2n) = O(n) - in time, going through book only once , twice in case there are no such words in dict (read word, copy word).
+
+header:
+O(n) - in time, where n - elements in dict. Going through array, copying to str.
+O(n) - in space, where n - length of words.
+
+dictSearch:
 O(1) - to search inside hash table. O(n) - in worst case, if all objects in one node in dictionary (bash hash function).
 O(n) - to handle collision, where n - number of elements in list.
 O(1) - no additional space for search.
 
-
-Insert:
+dictInsert:
 O(1) - insert in average in not much collisions, O(n) - in worst case to iterate through collision list, n - number of elements in list.
 O(m) - space capacity, to copy items from array to hash table. m - number of elememnts in array.
- 

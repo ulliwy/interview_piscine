@@ -6,7 +6,7 @@
 /*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 15:23:41 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/23 16:59:20 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/24 10:16:44 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int howManyJesus(char *bible, char *jesus)
 
 void test()
 {
-	char *bible = "he";
+	char *bible = "hellolloello";
 	char *jesus = "ello";
 	printf("%d \n", howManyJesus(bible, jesus));
 }

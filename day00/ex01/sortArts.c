@@ -6,7 +6,7 @@
 /*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 10:38:41 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/23 11:31:55 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/24 10:07:55 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ int getSize(struct s_art **arts)
 
 int part(struct s_art **arts, int low, int high)
 {
-	//int pivot = arts[high]->price;
 	char *pivot = arts[high]->name;
 	struct s_art *tmp;
 	int i = low - 1;
 
 	for (int j = low; j <= high - 1; j++)
 	{
-		//if (arts[j]->price <= pivot)
 		if (strcmp(arts[j]->name, pivot) <= 0)	
 		{
 			i++;
