@@ -1,0 +1,7 @@
+push:
+O(1) - time, inserting as first element.
+O(1) - no additional space.
+
+pop:
+O(1) - time, pop first element.
+O(1) - no additional space.

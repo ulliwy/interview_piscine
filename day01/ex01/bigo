@@ -1,0 +1,2 @@
+O(n) - time to reverse all n elements;
+O(1) - no additional space.

@@ -19,7 +19,7 @@ int main(void)
 	launch your test here
 	--------------------*/
 	struct s_dict *dict;
-	dict = dictInit(lenWords);
+	dict = dictInit(255);
 	for (int i = 0; i < lenWords; i++)
 		dictInsert(dict, words[i], i);
 
