@@ -6,7 +6,7 @@
 /*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 17:02:59 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/24 02:09:10 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/24 02:27:45 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,23 +121,30 @@ char *dictPrintHeader(struct  s_dict *dict, int *size)
 
 char *compress(char *book, struct s_dict *dict)
 {
-	printf("%s\n", book);
-	//int dict_size;
-	//char *header = dictPrintHeader(dict, &dict_size);
-	char *new = calloc(1, 100);//calloc(1, strlen(book) + dict_size + 1);
-	//strncpy(new, header, dict_size);
-	//free(header);
-	int i = 0;
+	int dict_size;
+	char *header = dictPrintHeader(dict, &dict_size);
+	//printf("%s\n", header);
 	int j = 0;
+	int i = 0;
+	char *new = malloc(strlen(book) + dict_size + 1);
+	while (!isprint(book[j]) && book[j])
+	{
+		new[i] = book[j];
+		i++;
+		j++;
+	}
+	strncpy(new + i, header, dict_size);
+	free(header);
 	int jj = 0;
 	//int word_size = 0;
 	char *word;
 	int hash_num;
+	i += dict_size;
 
 	while (book[j])
 	{
-		printf("<%c>\n", book[j + 1]);
-		break;
+		//printf("<%c>\n", book[j + 1]);
+		//break;
 		while (!isalnum(book[j]) && book[j])
 		{
 			//printf("space\n");
