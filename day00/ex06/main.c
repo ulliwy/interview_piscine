@@ -15,7 +15,7 @@ int main(void)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	decompress("@? @? eBook or online at www.gutenberg.org");
+	decompress(cBook);
 
 	return (0);
 }

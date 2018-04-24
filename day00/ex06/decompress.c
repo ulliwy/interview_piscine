@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   decompress.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 00:29:54 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/24 00:52:29 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/24 11:50:47 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,111 @@ int stringAppend(struct s_string *dyString, char *str) //success: return 1, fail
 	return 1;
 }
 
+size_t hash(char *input)
+{
+	int i = 101;
+	while (*input)
+	{
+		i = i * 1099511628211;
+		i = i ^ (*input);
+		input++;
+	}
+	return i;
+}
+
+int	dictInsert(struct s_dict *dict, char *key, int value)
+{
+	size_t k = value % dict->capacity;
+	
+	if (!dict->items[k])
+	{
+		dict->items[k] = (struct s_item *)malloc(sizeof(struct s_item));
+		if (!dict->items[k])
+			return (0);
+		dict->items[k]->key = strdup(key);
+		dict->items[k]->value = value;
+		dict->items[k]->next = NULL;
+	}
+	else
+	{
+		struct s_item *tmp = dict->items[k];
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = (struct s_item *)malloc(sizeof(struct s_item));
+		tmp->next->key = strdup(key);
+		if (!tmp->next || !tmp->next->key)
+			return (0);
+		tmp->next->value = value;
+		tmp->next->next = NULL;
+	}	
+	return (1);
+}
+
+char *dictSearch(struct s_dict *dict, int k)
+{
+	struct s_item *temp;
+
+	temp = dict->items[k];
+	if (k > 0 && k < 256 && dict->items[k])
+		return (temp->key);
+	return(NULL);
+
+}
+
+struct s_dict *dictInit(int capacity)
+{
+	struct s_dict *dict = (struct s_dict *)malloc(sizeof(struct s_dict));
+
+	dict->capacity = capacity;
+	dict->items = (struct s_item **)calloc(capacity, sizeof(struct s_item *));
+	return (dict);
+}
+
 char *decompress(char *cBook)
 {
-	struct s_string *str = stringInit();
-	stringAppend(str, "hellofffff");
-	stringAppend(str, "");
-	printf("<%s>\n", str->content);
+	struct s_dict *dict = dictInit(256);
 
+	struct s_string *str = stringInit();
+	int i = 1;
+	char *word = malloc(20);
+	int count = 1;
+	int j = 0;
+	while (cBook[i] != '>' && cBook[i])
+	{
+		if (cBook[i] != ',')
+		{
+			word[j] = cBook[i];
+			j++;
+		}
+		else
+		{
+			word[j] = '\0';
+			j = 0;
+			dictInsert(dict, word, count);
+			count++;
+		}
+		i++;
+	}
+	i++;
+	word[j] = '\0';
+	dictInsert(dict, word, count);
+	cBook = cBook + i;
+	i = 0;
+	while (cBook[i])
+	{
+		j = i;
+		while (cBook[i] && cBook[i] != '@')
+		{
+			i++;
+		}
+		cBook[i] = '\0';
+		stringAppend(str, cBook + j);
+		char *hash;
+		if ((hash = dictSearch(dict, cBook[i + 1])))
+			stringAppend(str, hash);
+		cBook[i + 1] = '\0';
+		i += 2;
+	}
+	printf("%s", str->content);
 	return cBook;
 }

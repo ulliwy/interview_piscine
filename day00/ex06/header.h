@@ -24,6 +24,17 @@ struct s_string {
   int  capacity; //the allocated size of 'content'
 };
 
+struct s_item {
+  char            *key;
+  int       value;
+  struct s_item   *next;
+};
+
+struct s_dict {
+  struct s_item **items;
+  int           capacity; //the capacity of the array 'items'
+};
+
 /*--------------------------------
   :) function you must implement
   --------------------------------*/

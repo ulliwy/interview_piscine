@@ -28,9 +28,11 @@ int main(void)
 	//printf("%d\n", dictSearch(dict, "shall"));
 	//printf("%d\n", dictSearch(dict, "every"));
 	//printf("%d\n\n", dictSearch(dict, "come"));
-	char *test = calloc(1, 50);
-	strcpy(test, "with this");
-	printf("%s", compress(book, dict));
+	// char *test = calloc(1, 50);
+	// strcpy(test, "with this");
+	char *test = compress(book, dict);
+	printf("%s", test);
+	free(test);
 	return (0);
 }
 
