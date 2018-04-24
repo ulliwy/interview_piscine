@@ -23,12 +23,17 @@ int main(void)
 	for (int i = 0; i < lenWords; i++)
 		dictInsert(dict, words[i], i);
 
-	printf("%d\n", dictSearch(dict, "with"));
-	printf("%d\n", dictSearch(dict, "that"));
-	printf("%d\n", dictSearch(dict, "every"));
-	printf("%d\n\n", dictSearch(dict, "come"));
+	//printf("%d\n", dictSearch(dict, "Jesus"));
+	//printf("%d\n", dictSearch(dict, "shall"));
+	//printf("%d\n", dictSearch(dict, "every"));
+	//printf("%d\n\n", dictSearch(dict, "come"));
+	char *test = calloc(1, 50);
+	strcpy(test, "with this");
 
-	printf("%s\n", compress("here is hjjhjjh with jj", dict));
+	//compress(test, dict);
+
+	//compress(book, dict);
+	printf("%s\n", compress(book, dict));
 	return (0);
 }
 

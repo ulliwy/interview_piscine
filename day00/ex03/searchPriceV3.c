@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   searchPriceV3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 12:20:24 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/23 14:50:52 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/24 00:20:28 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,17 @@ int dictInsert(struct s_dict *dict, char *key, struct s_art *value)
 struct s_art *dictSearch(struct s_dict *dict, char *key)
 {
 	int k = hash(key) % dict->capacity;
-	while (dict->items[k])
+	struct s_item *temp;
+
+	temp = dict->items[k];
+	while (temp)
 	{
-		if (!strcmp(key, dict->items[k]->value->name))
+		if (!strcmp(key, temp->value->name))
 		{
 			//printf("%s %s\n", key, dict->items[k]->value->name);
-			return (dict->items[k]->value);
+			return (temp->value);
 		}
-		dict->items[k] = dict->items[k]->next;
+		temp = temp->next;
 	}
 	return(NULL);
 
