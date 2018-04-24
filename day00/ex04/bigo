@@ -1,0 +1,2 @@
+O(n) - in best case scenarion, O(n*m) - worst case, in case of false positives.
+O(1) - no any additional space is used.

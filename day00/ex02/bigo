@@ -1,0 +1,2 @@
+O(log(n)) time, with n the number of elements in the array. Every time we divide th arr in 2 halves.
+O(1) space.

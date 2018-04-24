@@ -1,0 +1,8 @@
+Search:
+O(1) - to search inside hash table.
+O(n) - to handle collision, where n - number of elements in list.
+O(m) - space capacity, to copy items from array to hash table. m - number of elememnts in array.
+
+Insert:
+O(1) - insert in average in not much collisions, O(n) - in worst case to iterate through list.
+ 
