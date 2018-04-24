@@ -47,6 +47,6 @@ void readWordsFile(char ***pWords, int *pLenWords);
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-
+char *dictPrintHeader(struct  s_dict *dict, int *size);
 
 #endif

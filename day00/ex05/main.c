@@ -32,8 +32,8 @@ int main(void)
 
 	//compress(test, dict);
 
-	//compress(book, dict);
-	printf("%s\n", compress(book, dict));
+	compress(book, dict);
+	//printf("%s", compress(book, dict));
 	return (0);
 }
 
