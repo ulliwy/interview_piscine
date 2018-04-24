@@ -6,7 +6,7 @@
 /*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 17:02:59 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/23 17:37:36 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/23 17:49:40 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	dictSearch(struct s_dict *dict, char *key)
 		if (!strcmp(key, dict->items[k]->key))
 		{
 			//printf("%s %s\n", key, dict->items[k]->value->name);
-			return (dict->items[k]->value);
+			return (k);
 		}
 		dict->items[k] = dict->items[k]->next;
 	}
@@ -80,5 +80,7 @@ struct s_dict *dictInit(int capacity)
 
 char *compress(char *book, struct s_dict *dict)
 {
+	int i = 0;
+	int j = 0;
 	return (NULL);
 }
