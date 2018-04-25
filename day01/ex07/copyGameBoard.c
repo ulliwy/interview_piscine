@@ -3,21 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   copyGameBoard.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 22:13:08 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/24 23:16:39 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/25 13:31:47 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <stdlib.h>
 
-// struct s_node {
-// 	int value;
-// 	struct s_node *random;
-// 	struct s_node *next;
-// };
 
 int listLen(struct s_node *node)
 {
@@ -58,7 +53,6 @@ struct s_node *cloneGameBoard(struct s_node *node)
 		if (tmp->random)
 			table[tmp->value]->random = table[tmp->random->value];
 		tmp = tmp->next;
-	}
-
+	};
 	return res;
 }

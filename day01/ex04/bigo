@@ -1,0 +1,7 @@
+enqueue:
+O(1) - in time, add to last element.
+O(1) - in space, no additional space.
+
+dequeue:
+O(1) - in time, pop first element.
+O(1) - in space, no additional space.

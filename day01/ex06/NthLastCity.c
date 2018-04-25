@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   NthLastCity.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 21:47:18 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/24 22:03:34 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/25 13:23:50 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char *NthLastCity(struct s_city *city, int n)
 	struct s_city *current = city;
 	int shift = -n;
 
+	if (n < 0)
+		return NULL;
 	while (city)
 	{
 		if (shift >= 0)

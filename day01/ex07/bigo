@@ -1,0 +1,2 @@
+O(2n) = O(n) - in time, going through list twice.
+O(n) - in space, allocated temp array for list.

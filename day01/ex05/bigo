@@ -1,0 +1,3 @@
+stack push and pop:
+O(1) - in time, adding top element, removng top element.
+O(1) - in space

@@ -1,0 +1,2 @@
+O(n) - in time, going through array only once.
+O(1) - no additional space.

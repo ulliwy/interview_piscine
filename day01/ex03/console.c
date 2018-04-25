@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   console.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 16:27:19 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/24 19:33:57 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/25 13:10:58 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ char *console(void)
 	 	if (!strncmp("UNDO", line, 4))
 	 	{
 	 		idx = pop(stack);
-	 		printf("%d\n", idx);
 	 		memset(msg + idx, '\0', 256 - idx);
 	 		i = idx;
 	 	}

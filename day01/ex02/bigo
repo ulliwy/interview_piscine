@@ -1,5 +1,5 @@
 push:
-O(1) - time, inserting as first element.
+O(1) - time, inserting as first element, pushFront.
 O(1) - no additional space.
 
 pop:

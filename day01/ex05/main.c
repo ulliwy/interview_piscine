@@ -36,9 +36,9 @@ int main(void)
 		i++;
 	}
 	printf("\npop: %d\n", tankPop(tank));
-	printf("\npop: %d\n", tankPop(tank));
-	printf("\npop: %d\n", tankPop(tank));
-	printf("\npop: %d\n", tankPop(tank));
+	printf("pop: %d\n", tankPop(tank));
+	printf("pop: %d\n", tankPop(tank));
+	printf("pop: %d\n", tankPop(tank));
 
 	tankPush(tank, 900);
 	printf("\npop: %d\n", tankPop(tank));
