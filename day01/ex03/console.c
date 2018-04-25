@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   console.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 16:27:19 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/24 16:42:13 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/24 19:33:57 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 struct s_stack *stackInit(void)
 {
@@ -21,12 +22,12 @@ struct s_stack *stackInit(void)
 	return stack;
 }
 
-void push(struct s_stack *stack, char *word)
+void push(struct s_stack *stack, int idx)
 {
 	if (!stack)
 		return;
 	struct s_item *new = malloc(sizeof(struct s_item));
-	new->word = word;
+	new->idx = idx;
 	if (!stack->item)
 	{
 		new->next = NULL;
@@ -37,33 +38,60 @@ void push(struct s_stack *stack, char *word)
 	stack->item = new;
 }
 
-void *pop(struct s_stack *stack)
+int pop(struct s_stack *stack)
 {
+	int idx;
+
 	if (!stack)
-		return NULL;
+		return 0;
 	if (!stack->item)
-		return NULL;
+		return 0;
 
 	struct s_item *current = stack->item;
-	char *c;
 	stack->item = stack->item->next;
-	c = current->word;
+	idx = current->idx;
 	free(current);
-	return c;
+	return idx;
 }
 
 char *console(void)
 {
-	char input[256];
-	char *msg = calloc(1, 1000);
+	char *msg = calloc(1, 256);
 	struct s_stack *stack = stackInit();
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t read;
+	int i = 0;
+	int idx;
 
 	while (1)
 	{
 		printf(":> ");
-		scanf("%s\n", input);
-		if (scanf("%s\n", input) < 0)
-			break;
-		push(stack, input);
+	 	read = getline(&line, &len, stdin);
+	 	if (!strncmp("UNDO", line, 4))
+	 	{
+	 		idx = pop(stack);
+	 		printf("%d\n", idx);
+	 		memset(msg + idx, '\0', 256 - idx);
+	 		i = idx;
+	 	}
+	 	else if (!strncmp("SEND", line, 4))
+	 	{
+	 		while (stack->item)
+				pop(stack);
+			free(stack);
+			if (i > 0)
+				msg[i - 1] = '\0';
+			return msg;
+	 	}
+	 	else
+	 	{
+	 		push(stack, i);
+	 		strncat(msg, line, read - 1);
+	 		strncat(msg, " ", 1);
+	 		i += read;
+	 	}
+	 	printf("%s\n\n", msg);
 	}
+	return NULL;
 }
