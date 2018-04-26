@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sortStone.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 09:01:46 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/25 17:12:03 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/25 19:39:36 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,70 +28,82 @@ int getLen(struct s_stone **stone)
 	return i;
 }
 
-void sortStones(struct s_stone **stone)
+int getBucketNum(struct s_stone *stone, struct s_stone **arr)
 {
-	int size = getLen(stone);
-	struct s_stone **arr;
-	int temp;
-	struct s_stone *node = *stone;
-	struct s_stone *temp_node;
-	struct s_stone *last = NULL;
-	int i;
-	int groups;
+	int num = 0;
+	int size = 0;
 
 	if (!stone)
-		return;
-	arr = calloc(1, sizeof(struct s_stone *) * size);
-	temp = node->size;
-	arr[0] = node;
-	i = 1;
-	node = node->next;
-	while (node)
+		return 0;
+	while (stone)
 	{
-		if (temp != node->size)
+		if (stone->size != size)
 		{
-			temp = node->size;
-			arr[i] = node;
-			i++;
+			if (arr)
+				arr[num] = stone;
+			size = stone->size;
+			num++;
 		}
-		node = node->next;
+		stone = stone->next;
 	}
-	groups = i;
-	for (i = 0; i < groups; i++)
+	return num;
+}
+
+void printArr(struct s_stone **arr, int size)
+{
+	for (int i=0;i<size;i++)
+		printf("%d ", arr[i]->size);
+	printf("\n");
+}
+
+void bubbleSort(struct s_stone **arr, int size)
+{
+	struct s_stone *temp;
+
+	for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < groups; j++)
+		for (int j = 0; j < size; j++)
 		{
 			if (arr[i]->size < arr[j]->size)
 			{
-				temp_node = arr[i];
-				arr[j] = arr[i];
-				arr[i] = temp_node;
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
 			}
 		}
 	}
-	for (i = 0; i < groups; i++)
+}
+
+struct s_stone *getLast(struct s_stone *node)
+{
+	while (node->next && node->next->size == node->size)
+		node = node->next;
+	return node;
+}
+
+struct s_stone *reorder(struct s_stone **arr, int size)
+{
+	struct s_stone *node;
+
+	for (int i = 0; i < size; i++)
 	{
-		if (last)
-			last->next = arr[i];
-		while(arr[i])
-		{
-			if (!arr[i]->next)
-			{
-				last = arr[i];
-				break;
-			}
-			if (arr[i]->size != arr[i]->next->size)
-			{
-				last = arr[i];
-				break;
-			}
-			arr[i] = arr[i]->next;
-		}
-		if (i == groups - 1)
-			arr[i] = NULL;
+		node = getLast(arr[i]);
+		if (i == size - 1)
+			node->next = NULL;
+		else
+			node->next = arr[i + 1];
 	}
-	*stone = arr[0];
-	free(arr);
+	return arr[0];
+}
+
+void sortStones(struct s_stone **stone)
+{
+	int buckets = getBucketNum(*stone, NULL);
+	struct s_stone *arr[buckets];
+
+	getBucketNum(*stone, arr);
+	bubbleSort(arr, buckets);
+	*stone = reorder(arr, buckets);
 }
 
 // void split(struct s_stone *head, struct s_stone **left, struct s_stone **right)
