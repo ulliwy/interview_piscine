@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   countSort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 13:47:04 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/25 14:35:40 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/25 20:31:38 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ void countSort(unsigned char *utensils, int n)
 	}
 	for (i = 0; i < n; i++)
 		utensils[i] = result[i];
+	free(result);
 }
