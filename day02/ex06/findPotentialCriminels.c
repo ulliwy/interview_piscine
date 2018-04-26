@@ -3,31 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   findPotentialCriminels.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:47:11 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/26 09:05:14 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/26 16:26:08 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-// struct s_info {
-// 	int gender;
-// 	int height;
-// 	int hairColor;
-// 	int eyeColor;
-// 	int glasses;
-// 	int tattoo;
-// 	int piercing;
-// };
-
-// struct s_criminal {
-// 	char *name;
-// 	int  description;
-// };
 
 int getDescription(struct s_info *info)
 {

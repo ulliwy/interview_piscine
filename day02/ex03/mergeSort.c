@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mergeSort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 11:27:42 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/25 12:59:28 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/26 16:25:38 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,7 @@ void merge(struct s_player **players, int left, int mid, int right)
 	k = left;
 	while (i < L && j < R)
 	{
-		if (Larr[i]->score == Rarr[j]->score)
-		{
-			if (strcmp(Larr[i]->timeStamp, Rarr[j]->timeStamp) <= 0)
-			{
-				players[k] = Larr[i];
-				i++;
-			}
-			else
-			{
-				players[k] = Rarr[j];
-				j++;
-			}
-		}
-		else if (Larr[i]->score > Rarr[j]->score)
+		if (Larr[i]->score >= Rarr[j]->score)
 		{
 			players[k] = Larr[i];
 			i++;

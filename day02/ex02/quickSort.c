@@ -3,20 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   quickSort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 10:21:37 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/25 11:24:30 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/26 16:25:21 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <stdio.h>
-
-// struct s_player {
-//   int   score;
-//   char  *name;
-// };
 
 int getSize(struct s_player **players)
 {

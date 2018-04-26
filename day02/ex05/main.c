@@ -8,9 +8,9 @@
 
 int main(void)
 {
-	int n = 7;
-	int rocks[7] = {2, 2, 2, 1, 1, 1, 2};
-	int value = 1;
+	int n = 10;
+	int rocks[10] = {2, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+	int value = 2;
 
 	srand(time(NULL));
 	//n = rand() % 90 + 10;
