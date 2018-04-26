@@ -6,7 +6,7 @@
 /*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 16:27:19 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/25 13:10:58 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/25 16:56:19 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char *console(void)
 	 	}
 	 	else if (!strncmp("SEND", line, 4))
 	 	{
+	 		free(line);
 	 		while (stack->item)
 				pop(stack);
 			free(stack);

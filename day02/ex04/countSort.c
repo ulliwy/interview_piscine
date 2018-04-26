@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertionSort.c                                    :+:      :+:    :+:   */
+/*   countSort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/25 09:54:48 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/25 14:44:46 by iprokofy         ###   ########.fr       */
+/*   Created: 2018/04/25 13:47:04 by iprokofy          #+#    #+#             */
+/*   Updated: 2018/04/25 14:35:40 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-// O(n*n)
-void insertionSort(struct s_player **players)
+void countSort(unsigned char *utensils, int n)
 {
-	struct s_player *temp;
-	int i = 1;
-	int j;
+	unsigned char *result = malloc(n);
+	int i = 0;
+	int count[16] = {0};
 
-	while (players[i])
+	while (i < n)
 	{
-		temp = players[i];
-		j = i - 1;
-		while (j >= 0 && players[j]->score < temp->score)
-		{
-			players[j + 1] = players[j];
-			j--;
-		}
-		players[j + 1] = temp;
+		count[utensils[i]]++;
 		i++;
 	}
+	i = 1;
+	while (i < 16)
+	{
+		count[i] += count[i - 1];
+		i++;
+	}
+	for (i = 0; i < n; i++)
+	{
+		result[count[utensils[i]] - 1] = utensils[i]; // index is incremented by 1
+		count[utensils[i]]--;
+	}
+	for (i = 0; i < n; i++)
+		utensils[i] = result[i];
 }

@@ -27,6 +27,7 @@ int main(void)
 	printf("- %s\n", dequeue(qu));
 	printf("isEmpty: %d\n\n", isEmpty(qu));
 
+	node = qu->first;
 	while (node)
 	{
 		printf("+ %s\n", node->message);
