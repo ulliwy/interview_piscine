@@ -6,7 +6,7 @@
 /*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 19:47:11 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/26 00:04:22 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/26 09:05:14 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void countSort(struct s_criminal **criminals, int ten, int n)
 	{
 		int d = (criminals[i]->description / ten) % 10;
 
-		result[count[d]-1] = criminals[i]; // index is incremented by 1
+		result[count[d] - 1] = criminals[i]; // index is incremented by 1
 		count[d]--;
 	}
 
@@ -125,17 +125,19 @@ struct s_criminal **findPotentialCriminals(struct s_criminal **criminals, struct
 	int len;
 	int upper;
 	int desc = getDescription(info);
+	int found;
+	int i;
+	struct s_criminal **result;
 
 	getMax(criminals, &len);
-	int found = binarySearch(criminals, 0, len, desc);
-
+	found = binarySearch(criminals, 0, len, desc);
 	if (found == -1)
 		return NULL;
 	upper = found + 1;
 	while (criminals[upper] && criminals[upper]->description == desc)
 		upper++;
-	struct s_criminal **result = malloc(sizeof(struct s_criminal *) * (upper - found + 1));
-	int i = 0;
+	result = malloc(sizeof(struct s_criminal *) * (upper - found + 1));
+	i = 0;
 	while (found != upper)
 		result[i++] = criminals[found++];
 	result[i] = NULL;

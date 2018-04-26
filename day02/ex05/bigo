@@ -1,0 +1,2 @@
+O(logn) - in time, binary search + shift left for first item.
+O(1) - in space.
