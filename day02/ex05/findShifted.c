@@ -6,7 +6,7 @@
 /*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 14:49:51 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/26 14:54:23 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/26 16:43:42 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int search(int *rocks, int left, int right, int value)
 int searchShifted(int *rocks, int length, int value)
 {
 	int start = search(rocks, 0, length - 1, value);
+	if (start == -1)
+		return -1;
 	while (start >= 0 && rocks[start] == value)
 		start--;
 	return start + 1;
