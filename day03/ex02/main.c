@@ -19,9 +19,13 @@ int main(void)
         --------------------*/
 
 	node = findParent(root, "Dinosauria", "Homo sapiens");
-	// if (node)
-	// 	printf("%s\n", node->name);
-
+	if (node)
+		printf("%s\n", node->name);
+	node = findParent(root, "Lynx", "Marsupialia"); // returns the "Mammalia" node
+	if (node)
+		printf("%s\n", node->name);
+	node = findParent(root, "Dinosauria", "I do not exist !"); // returns NULL
+	printf("%p\n", node->name);
 	return (0);
 }
 

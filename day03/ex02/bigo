@@ -1,0 +1,2 @@
+O(n) - in time, worst case if there areno such nodes - traverse the whole tree.
+O(1) - in space.

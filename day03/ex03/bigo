@@ -1,0 +1,2 @@
+O(n*n) - in time, bubble sort, swapping nodes.
+O(1) - in place swapping.
