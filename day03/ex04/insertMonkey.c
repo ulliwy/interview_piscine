@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertMonkey.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 23:08:46 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/28 00:22:50 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/28 10:04:07 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,14 +137,17 @@ int parent(int i) { return (i-1)/2; }
 
 void insertMonkey(struct s_node **root, struct s_node *monkey)
 {
+	int size = getSize(*root);
+	struct s_node ***arr = malloc(sizeof(struct s_node **) * (size + 1));
+	int i = 0;
+	struct s_node **monkey_pos;
+
 	if (!(!monkey->left && !monkey->right))
 		return;
 	if (!root)
 		return;
-	int size = getSize(*root);
-	struct s_node ***arr = malloc(sizeof(struct s_node **) * (size + 1));
-	int i = 0;
-	struct s_node **monkey_pos = getArray(root, arr, &i, monkey);
+	
+	monkey_pos = getArray(root, arr, &i, monkey);
 	arr[size] = monkey_pos;
 	i = size;
 	while (i != 0 && (*arr[parent(i)])->value < (*arr[i])->value)
