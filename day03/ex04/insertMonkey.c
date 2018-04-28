@@ -6,7 +6,7 @@
 /*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 23:08:46 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/27 17:04:31 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/27 17:46:38 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,19 +124,19 @@ void swap(struct s_node **parent, struct s_node **child)
 	*parent = *child;
 	if (temp->left == *child)
 	{
-		(*parent)->left = temp;
-		(*parent)->right = temp->right;
+		(*child)->left = temp;
+		(*child)->right = temp->right;
 	}
 	else
 	{
-		(*parent)->right = temp;
-		(*parent)->left = temp->left;
+		(*child)->right = temp;
+		(*child)->left = temp->left;
 	}
 	temp->left = childLeft;
 	temp->right = childRight;
+	*child = temp;
 	printf("%d %d\n", (*parent)->value, (*child)->value);
-	if (*parent == *child)
-		printf("EQUALS!\n");
+	printf("%d\n", (*parent)->left->value);
 }
 
 void popNode(struct s_node **arr, int size)
@@ -188,19 +188,20 @@ void insertMonkey(struct s_node **root, struct s_node *monkey)
  //       swap(&harr[i], &harr[parent(i)]);
  //       i = parent(i);
  //    }
-	printf("arr[0]: %d, arr[1]: %d\n", arr[0]->value, arr[1]->value);
-	swap(&(arr[0]), &(arr[1]));
-	printf("SWAP RESULT\n");
-	printBinaryTree(*root);
+	//printf("arr[0]: %d, arr[1]: %d\n", arr[0]->value, arr[1]->value);
+	//swap(root, &(*root)->left);
+	//printf("SWAP RESULT\n");
+	//printBinaryTree(*root);
 	i = size;
-	// while (i != 0 && arr[parent(i)]->value < arr[i]->value)
-	// {
-	// 	printf("SWAP RESULT\n");
-	// 	printf("swapping indexes: %d and %d\n", parent(i), i);
-	// 	swap(&(arr[parent(i)]), &(arr[i]));
-	// 	printBinaryTree(*root);
-	// 	break;
-	// }
+	while (i != 0 && arr[parent(i)]->value < arr[i]->value)
+	{
+		printf("SWAP RESULT\n");
+		printf("swapping indexes: %d and %d\n", parent(i), i);
+		swap(&(arr[parent(i)]), &(arr[i]));
+		printf("%d %d\n", arr[parent(i)]->value, arr[i]->value);
+		printBinaryTree(*root);
+		break;
+	}
 	// i = size;
 	// while (i != 0 && arr[parent(i)]->value < arr[i]->value)
 	// {
@@ -228,8 +229,8 @@ void insertMonkey(struct s_node **root, struct s_node *monkey)
 	// }
 	//popNode(arr, size);
 	// i = 0;
-	for (i = 0; i <=size; i++)
-		printf("%d:%d ", i, arr[i]->value);
-	printf("\n");
+	// for (i = 0; i <=size; i++)
+	// 	printf("%d:%d ", i, arr[i]->value);
+	// printf("\n");
 
 }
