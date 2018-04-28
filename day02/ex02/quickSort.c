@@ -6,7 +6,7 @@
 /*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 10:21:37 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/26 16:25:21 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/27 12:43:56 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int part(struct s_player **players, int left, int right)
 	}
 	temp = players[right];
 	players[right] = players[i + 1];
-	players[i + 1] = players[right];
+	players[i + 1] = temp;
 	return (i + 1);
 }
 

@@ -10,16 +10,35 @@ int main(void)
 {
 	struct s_node *root;
 
-	root = genMaxHeap(time(NULL)); //get a max heap
+	root = genMaxHeap(0); //get a max heap
 	printBinaryTree(root);
 
 	/*-------------------
 	launch your test here
 	--------------------*/
 	// printf("inserting some monkey\n");
-	// insertMonkey(&root, randomMonkey());
-	// printBinaryTree(root);
-  printf("%d\n",randomMonkey()->value);
+  struct s_node *monkey = randomMonkey();
+  monkey->value = 200;
+  printf("\nadded value: %d\n", monkey->value);
+	insertMonkey(&root, monkey);
+  
+  // monkey = randomMonkey();
+  //insertMonkey(&root, randomMonkey());
+  // insertMonkey(&root, randomMonkey());
+  // insertMonkey(&root, randomMonkey());
+  // insertMonkey(&root, randomMonkey());
+  printBinaryTree(root);
+  // printf("%d\n", monkey->value);
+  // monkey = randomMonkey();
+  //insertMonkey(&root, monkey);
+  // printf("%d\n", monkey->value);
+  // monkey = randomMonkey();
+  // insertMonkey(&root, monkey);
+  // printf("%d\n", monkey->value);
+  // monkey = randomMonkey();
+  // insertMonkey(&root, monkey);
+  // printf("%d\n", monkey->value);
+	//printBinaryTree(root);
 
 	return (0);
 }
