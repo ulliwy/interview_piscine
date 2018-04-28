@@ -6,7 +6,7 @@
 /*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 20:26:12 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/26 22:09:04 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/04/27 23:01:39 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void pop(struct s_node **parent, struct s_node **child)
 		(*child)->right = temp;
 		(*child)->left = temp->left;
 	}
+	//*child = temp;
 	temp->left = childLeft;
 	temp->right = childRight;
 }

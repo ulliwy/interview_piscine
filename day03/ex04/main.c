@@ -6,28 +6,42 @@
 
 #include "header.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
 	struct s_node *root;
+  int iter = atoi(argv[1]);
 
-	root = genMaxHeap(0); //get a max heap
+	root = genMaxHeap(1000); //get a max heap
 	printBinaryTree(root);
 
 	/*-------------------
 	launch your test here
 	--------------------*/
-	// printf("inserting some monkey\n");
-  struct s_node *monkey = randomMonkey();
-  monkey->value = 200;
-  printf("\nadded value: %d\n", monkey->value);
-	insertMonkey(&root, monkey);
+  for (int i = 0; i < iter; i++)
+  {
+    struct s_node *monkey = randomMonkey();
+    insertMonkey(&root, monkey);
+  }
+	// // printf("inserting some monkey\n");
+ //  struct s_node *monkey = randomMonkey();
+ //  //monkey->value = 200;
+ //  printf("\nadded value: %d\n", monkey->value);
+	// insertMonkey(&root, monkey);
+ //  printBinaryTree(root);
   
-  // monkey = randomMonkey();
-  //insertMonkey(&root, randomMonkey());
-  // insertMonkey(&root, randomMonkey());
-  // insertMonkey(&root, randomMonkey());
-  // insertMonkey(&root, randomMonkey());
-  printBinaryTree(root);
+ //  // monkey = randomMonkey();
+ //  monkey = randomMonkey();
+ //  printf("\nadded value: %d\n", monkey->value);
+ //  insertMonkey(&root, monkey);
+ //  printBinaryTree(root);
+
+ //  monkey = randomMonkey();
+ //  printf("\nadded value: %d\n", monkey->value);
+ //  insertMonkey(&root, monkey);
+ //  // insertMonkey(&root, randomMonkey());
+ //  // insertMonkey(&root, randomMonkey());
+ //  // insertMonkey(&root, randomMonkey());
+  //printBinaryTree(root);
   // printf("%d\n", monkey->value);
   // monkey = randomMonkey();
   //insertMonkey(&root, monkey);

@@ -11,7 +11,7 @@ struct s_node {
 };
 
 struct s_item {
-  struct s_node *node;
+  struct s_node **node;
   struct s_item *next;
 };
 
