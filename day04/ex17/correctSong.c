@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   carPosition.c                                      :+:      :+:    :+:   */
+/*   correctSong.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/30 14:30:43 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/30 20:13:44 by Ulliwy           ###   ########.fr       */
+/*   Created: 2018/04/30 21:26:31 by Ulliwy            #+#    #+#             */
+/*   Updated: 2018/04/30 21:39:23 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int carPosition(unsigned int parkingRow)
-{
-	int i = 0;
-	int found = 0;
+#include "header.h"
 
-	while (parkingRow)
+void correctSong(struct s_bit *bit, int l, int row, int col, int dist)
+{
+	int i = row;
+	if (row < bit->n && col < l)
 	{
-		if (parkingRow & 0x1)
-			found++;
-		i++;
-		parkingRow = parkingRow >> 1;
+		while (dist && i < bit->n)
+		{
+			bit->arr[i] = 1 << col;
+			i++;
+			dist--;
+		}
 	}
-	if (!i || found != 1)
-		return -1;
-	return i - 1;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   isFilled.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 13:49:42 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/30 14:02:05 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/04/30 20:19:41 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int isFilled(unsigned int parkingRow)
 {
-	return 1 & parkingRow;
+	return parkingRow && (parkingRow & (-(~parkingRow))) == 0; // i & (i + 1)
 }

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   carPosition.c                                      :+:      :+:    :+:   */
+/*   aloneCan.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/30 14:30:43 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/30 20:13:44 by Ulliwy           ###   ########.fr       */
+/*   Created: 2018/04/30 21:44:45 by Ulliwy            #+#    #+#             */
+/*   Updated: 2018/04/30 21:52:29 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int carPosition(unsigned int parkingRow)
+#include "header.h"
+#include <stdio.h>
+
+void aloneCan(int *arr, int n)
 {
 	int i = 0;
-	int found = 0;
+	int cane = 0;
 
-	while (parkingRow)
+	while (i < n)
 	{
-		if (parkingRow & 0x1)
-			found++;
+		cane = cane ^ arr[i];
 		i++;
-		parkingRow = parkingRow >> 1;
 	}
-	if (!i || found != 1)
-		return -1;
-	return i - 1;
+	printf("%d\n", cane);
 }

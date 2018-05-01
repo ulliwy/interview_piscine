@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   carPosition.c                                      :+:      :+:    :+:   */
+/*   aloneCans.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/30 14:30:43 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/04/30 20:13:44 by Ulliwy           ###   ########.fr       */
+/*   Created: 2018/04/30 21:55:17 by Ulliwy            #+#    #+#             */
+/*   Updated: 2018/04/30 22:34:42 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int carPosition(unsigned int parkingRow)
-{
-	int i = 0;
-	int found = 0;
+#include "header.h"
+#include <stdio.h>
 
-	while (parkingRow)
+void aloneCans(int *arr, int n)
+{
+	int xor = 0;
+	int v1 = 0;
+	int v2 = 0;
+	int i = 0;
+	while (i < n)
 	{
-		if (parkingRow & 0x1)
-			found++;
+		xor = xor ^ arr[i];
 		i++;
-		parkingRow = parkingRow >> 1;
 	}
-	if (!i || found != 1)
-		return -1;
-	return i - 1;
+	xor = xor & ~(xor - 1); // right most significant
+	i = 0;
+	while (i < n)
+	{
+		if (arr[i] & xor)
+			v1 = v1 ^ arr[i];
+		else
+			v2 = v2 ^ arr[i];
+		i++;
+	}
+	printf("%d\n", v1);
+	printf("%d\n", v2);
+
 }
