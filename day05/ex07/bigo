@@ -1,0 +1,2 @@
+O(n*n!) - in time, going through string and finding combinations.
+O(n) - in space, creating new string. 

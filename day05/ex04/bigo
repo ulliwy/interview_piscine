@@ -1,0 +1,2 @@
+O(n*n*n!) - in time, all permutations.
+O(1) - in space.

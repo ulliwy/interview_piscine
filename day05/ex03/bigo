@@ -1,0 +1,2 @@
+O(n*n) - in time, if the whole matrix is island.
+O(1) - in space.

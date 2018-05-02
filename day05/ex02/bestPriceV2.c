@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bestPriceV2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 12:39:19 by iprokofy          #+#    #+#             */
-/*   Updated: 2018/05/01 14:10:43 by iprokofy         ###   ########.fr       */
+/*   Updated: 2018/05/02 10:03:47 by Ulliwy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,8 @@ double optimizedBestPrice(int pizzaSize, double *prices)
 	double *bestPrices = malloc((pizzaSize + 1) * sizeof(double));
 	memset(bestPrices, 0, pizzaSize + 1);
 	bestPrices[1] = 1.5;
-	return getMax(pizzaSize, prices, bestPrices);
+	double value;
+	value = getMax(pizzaSize, prices, bestPrices);
+	free(bestPrices);
+	return value;
 }

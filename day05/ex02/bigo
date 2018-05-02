@@ -1,0 +1,2 @@
+O(n) - in time, creating array of precalculated best prices.
+O(n) - array of precalculated values.

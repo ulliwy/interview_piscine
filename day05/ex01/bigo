@@ -1,0 +1,2 @@
+O(n!*n) - in time, for each element, find combination.
+O(1) - in space.
