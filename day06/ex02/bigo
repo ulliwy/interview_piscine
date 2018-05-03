@@ -1,0 +1,2 @@
+O(nLogn) - in time, n - number of games.
+O(1) - in space.

@@ -1,0 +1,2 @@
+O(n*n) - in time, n - number of people.
+O(1) - in space.
