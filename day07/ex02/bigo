@@ -1,0 +1,2 @@
+O(n) - in time to create every node.
+O(1) - in additional space.

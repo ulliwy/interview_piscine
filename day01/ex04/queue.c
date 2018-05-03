@@ -3,26 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   queue.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ulliwy <Ulliwy@student.42.fr>              +#+  +:+       +#+        */
+/*   By: iprokofy <iprokofy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 19:38:42 by Ulliwy            #+#    #+#             */
-/*   Updated: 2018/04/24 20:09:44 by Ulliwy           ###   ########.fr       */
+/*   Updated: 2018/05/03 12:06:52 by iprokofy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-// struct s_node {
-// 	char          *message;
-// 	struct s_node *next;
-// };
-
-// struct s_queue {
-//   struct s_node *first;
-// 	struct s_node *last;
-// };
 
 struct s_queue *queueInit(void)
 {
