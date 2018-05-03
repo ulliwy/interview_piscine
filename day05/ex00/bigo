@@ -1,2 +1,2 @@
-O(n!*n) - n*n*n! in worst case, in time, find element and check every other element and find combinations.
+O(n!) - in worst case, in time, find element and check every other element and find combinations.
 O(1) - in space.
