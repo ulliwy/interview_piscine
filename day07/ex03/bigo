@@ -1,0 +1,2 @@
+O(n) - in time, traverse tree only once.
+O(n) - in space, storing nodes in queue, worst case all nodes have bars and 1 dist far from start.
